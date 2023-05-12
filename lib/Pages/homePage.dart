@@ -108,6 +108,7 @@ class _homePageState extends State<homePage> {
                     bottomRight: Radius.circular(28)),
                 child: Image.asset(
                   "assets/images/furnhome.png",
+
                   fit: BoxFit.cover,
                 ),
               ),
