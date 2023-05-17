@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:furny/Pages/productView.dart';
 import 'package:furny/utilities/Constants/constantsCollection.dart';
 import 'package:furny/utilities/widgets/txtCommon.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -83,48 +84,53 @@ class _shopPageState extends State<shopPage> {
                      scrollDirection: Axis.vertical,
 
                     children: List.generate(10, (index){
-                      return Container(
-                        height: 250,
-                        width: 156,
+                      return GestureDetector(
+                        child: Container(
+                          height: 250,
+                          width: 156,
 
-                        decoration: BoxDecoration(
-                            color: HexColor(Constants().bgcolor),
-                          borderRadius: BorderRadius.only(topRight: Radius.circular(14),topLeft: Radius.circular(14))
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                         Container(
-                            height: 206,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(14),
-                              child: Image.asset("assets/images/furnimgone.png",
-                              fit: BoxFit.fill,
+                          decoration: BoxDecoration(
+                              color: HexColor(Constants().bgcolor),
+                            borderRadius: BorderRadius.only(topRight: Radius.circular(14),topLeft: Radius.circular(14))
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                           Container(
+                              height: 206,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(14),
+                                child: Image.asset("assets/images/furnimgone.png",
+                                fit: BoxFit.fill,
+                                ),
                               ),
                             ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              txtOfFurn(data: "PAOLA WOOD CHAIR", textstyle: Constants().semiboldstyleblack(14)),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(Icons.currency_rupee,color: HexColor(Constants().txtcolor),size: 12,),
+                                    txtOfFurn(data: "4,699", textstyle: Constants().regularstyleTxt(12)),
+                                    Spacer(),
+
+                                    Icon(Icons.star,color: HexColor(Constants().txtcolor),size: 12,),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    txtOfFurnone(data: "4.9", textstyle:Constants().semiboldstyleTxt(12),),
+                                  ],
+                                )
+
+                            ],
                           ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            txtOfFurn(data: "PAOLA WOOD CHAIR", textstyle: Constants().semiboldstyleblack(14)),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(Icons.currency_rupee,color: HexColor(Constants().txtcolor),size: 12,),
-                                  txtOfFurn(data: "4,699", textstyle: Constants().regularstyleTxt(12)),
-                                  Spacer(),
-
-                                  Icon(Icons.star,color: HexColor(Constants().txtcolor),size: 12,),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  txtOfFurnone(data: "4.9", textstyle:Constants().semiboldstyleTxt(12),),
-                                ],
-                              )
-
-                          ],
                         ),
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>productView()));
+                        },
                       );
                     })
 

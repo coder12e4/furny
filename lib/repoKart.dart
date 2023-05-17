@@ -19,7 +19,7 @@ class kartRepo extends kartAb{
       List<String> carts = [];
         carts.add(jsonEncode(k));
 
-      sharedPreferencesManager!.putStringList('savedProducts', carts);
+    await  sharedPreferencesManager!.putStringList('savedProducts', carts);
     }
 
   @override

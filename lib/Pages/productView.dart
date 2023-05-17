@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:furny/Pages/cart.dart';
 import 'package:furny/Pages/productDetail.dart';
+import 'package:furny/cubit/furny_cubit.dart';
+import 'package:furny/model/kartmodel.dart';
+import 'package:furny/repoKart.dart';
 import 'package:furny/utilities/Constants/constantsCollection.dart';
 import 'package:furny/utilities/widgets/btnCommon.dart';
 import 'package:furny/utilities/widgets/txtCommon.dart';
@@ -14,6 +17,15 @@ class productView extends StatefulWidget {
 }
 
 class _productViewState extends State<productView> {
+  late FurnyCubit objfurnycubit;
+
+  @override
+  void initState() {
+    objfurnycubit = FurnyCubit(FurnyInitial(), kartRepo());
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -307,10 +319,18 @@ class _productViewState extends State<productView> {
                     children: [
                       btnOfFun(
                           function: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => cart()));
+                            objfurnycubit.addkart(Kart(
+                                title: "chair",
+                                price: "4999.99",
+                                subHeading: "dfsdf",
+                                discription: "dhhnf",
+                              image: "sda",
+                              h: "45",
+                              b: "45",
+                              w:"98"
+
+
+                            ));
                           },
                           height: 42,
                           width: 164,
@@ -319,8 +339,7 @@ class _productViewState extends State<productView> {
                             textstyle: Constants().regularstylewhitebtn(17),
                           )),
                       btnOfFunTwo(
-                          function: () {
-                          },
+                          function: () {},
                           height: 42,
                           width: 164,
                           childWid: txtOfFurn(
