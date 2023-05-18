@@ -112,7 +112,9 @@ class _newloginState extends State<newlogin> {
               height: 32,
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+
+              },
               child: Container(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -133,10 +135,7 @@ class _newloginState extends State<newlogin> {
               height: 32,
             ),
             GestureDetector(
-              onTap: () {
-                objlogincubit.loginFun("amal", "amal@123");
 
-              },
               child: Container(
                 height: 60,
                 width: 400,
@@ -150,7 +149,9 @@ class _newloginState extends State<newlogin> {
                       listener: (context, state) {
                     if (state is LoginSuccess) {
                       login objnew = state.objlogin;
-                      Constants().loadPages(homePage(objlogin: objnew), context);
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>homePage(objlogin: objnew),));
+
+
 
                     }
                   },
@@ -167,7 +168,9 @@ class _newloginState extends State<newlogin> {
                   ),
                 ),
               ),
-
+              onTap: () {
+                objlogincubit.loginFun("asd", "sda");
+              },
 
             ),
             SizedBox(

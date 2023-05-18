@@ -23,8 +23,7 @@ class _homePageState extends State<homePage> {
   @override
   void initState() {
     objlogin = widget.objlogin;
-    username =objlogin!.data!.username;
-    password =objlogin!.data!.password;
+
     // TODO: implement initState
     super.initState();
   }

@@ -2,13 +2,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:furny/model/kartmodel.dart';
 import 'package:furny/utilities/Constants/constantsCollection.dart';
 import 'package:furny/utilities/widgets/btnCommon.dart';
 import 'package:furny/utilities/widgets/txtCommon.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class cart extends StatefulWidget {
-  const cart({Key? key}) : super(key: key);
+  final List<Kart>? kartlist;
+
+  const cart({Key? key, this.kartlist}) : super(key: key);
 
   @override
   State<cart> createState() => _cartState();
@@ -16,6 +19,21 @@ class cart extends StatefulWidget {
 
 class _cartState extends State<cart> {
   bool value=false;
+  List<Kart>? kartlist = [];
+
+
+
+  @override
+  void initState() {
+   kartlist = widget.kartlist;
+
+
+
+    // TODO: implement initState
+    super.initState();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,8 +86,8 @@ class _cartState extends State<cart> {
                   Expanded(
                     child: ListView.builder(
                         scrollDirection: Axis.vertical,
-                        itemCount: 5,
-                        itemBuilder: (context,int){
+                        itemCount: kartlist!.length,
+                        itemBuilder: (context,index){
                           return Container(
                             height: 120,
                             color:HexColor(Constants().bgcolor),
@@ -93,12 +111,12 @@ class _cartState extends State<cart> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    txtOfFurn(data: "PAOLA WOOD CHAIR", textstyle: Constants().regulartyleblack(16)),
+                                    txtOfFurn(data:kartlist![index].title!, textstyle: Constants().regulartyleblack(16)),
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       children: [
                                         Icon(Icons.currency_rupee,color: HexColor(Constants().txtcolor),size: 12,),
-                                        txtOfFurn(data: "4,699", textstyle: Constants().regularstyleTxt(12)),
+                                        txtOfFurn(data: kartlist![index].price!, textstyle: Constants().regularstyleTxt(12)),
                                       ],
                                     ),
                                     SizedBox(
@@ -108,7 +126,7 @@ class _cartState extends State<cart> {
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       children: [
 
-                                        txtOfFurn(data: "Oak Wood, L", textstyle: Constants().regularstyleCartxt(12)),
+                                        txtOfFurn(data: kartlist![index].subHeading!, textstyle: Constants().regularstyleCartxt(12)),
                                         SizedBox(
                                           width: 30,
                                         ),

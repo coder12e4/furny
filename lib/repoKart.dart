@@ -5,7 +5,7 @@ import 'model/kartmodel.dart';
 
 abstract class kartAb{
   Future<void>addKart(Kart k);
-  Future<List<Kart>>viewKart();
+  Future<List<Kart>>viewKart(Kart k);
   Future<List<Kart>>deleteKart(int index);
 }
 
@@ -39,7 +39,7 @@ class kartRepo extends kartAb{
 
 
   @override
-  Future<List<Kart>> viewKart() async {
+  Future<List<Kart>> viewKart(Kart k) async {
     List<String>? carts = [];
     if (sharedPreferencesManager!.isKeyExists('savedProducts') ?? false) {
       carts = sharedPreferencesManager!.getStringList('savedProducts');

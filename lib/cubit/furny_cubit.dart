@@ -24,4 +24,5 @@ class FurnyCubit extends Cubit<FurnyState> {
   }
 
 
+
 }

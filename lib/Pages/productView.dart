@@ -10,7 +10,10 @@ import 'package:furny/utilities/widgets/txtCommon.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class productView extends StatefulWidget {
-  const productView({Key? key}) : super(key: key);
+
+  final List<Kart>? kartlist;
+
+  const productView({Key? key, this.kartlist}) : super(key: key);
 
   @override
   State<productView> createState() => _productViewState();
@@ -18,6 +21,7 @@ class productView extends StatefulWidget {
 
 class _productViewState extends State<productView> {
   late FurnyCubit objfurnycubit;
+  List<Kart>? kartlist = [];
 
   @override
   void initState() {
@@ -328,9 +332,10 @@ class _productViewState extends State<productView> {
                               h: "45",
                               b: "45",
                               w:"98"
-
-
                             ));
+
+
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>cart(kartlist: kartlist,)));
                           },
                           height: 42,
                           width: 164,
