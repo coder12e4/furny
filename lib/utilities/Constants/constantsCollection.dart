@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:page_transition/page_transition.dart';
 
 class Constants {
   String bgcolor = "#EBE6D7";
@@ -128,4 +129,18 @@ class Constants {
       ],
     ),
   );
+
+  loadPages(Widget t ,BuildContext context){
+    return   Navigator.push(
+        context,
+        PageTransition(
+            type: PageTransitionType.scale,
+            alignment: Alignment.center,
+            duration: Duration(milliseconds: 400),
+            isIos: true,
+            child: t));
+  }
+
+
+
 }

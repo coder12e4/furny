@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:furny/Pages/cart.dart';
 import 'package:furny/Pages/productDetail.dart';
 import 'package:furny/Pages/shopPage.dart';
+import 'package:furny/auth/newloginpage.dart';
 
 import 'Pages/homePage.dart';
 import 'Pages/productView.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home:  homePage(),
+      home:  newlogin(),
     );
   }
 }

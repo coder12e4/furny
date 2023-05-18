@@ -1,18 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:furny/Pages/productView.dart';
+import 'package:furny/model/loginmodel.dart';
 import 'package:furny/utilities/Constants/constantsCollection.dart';
 import 'package:furny/utilities/widgets/btnCommon.dart';
 import 'package:furny/utilities/widgets/txtCommon.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class homePage extends StatefulWidget {
-  const homePage({Key? key}) : super(key: key);
+  final login objlogin;
+  const homePage({Key? key, required this.objlogin}) : super(key: key);
 
   @override
   State<homePage> createState() => _homePageState();
 }
 
 class _homePageState extends State<homePage> {
+  login? objlogin;
+  Data? data;
+  String? username;
+  String? password;
+
+  @override
+  void initState() {
+    objlogin = widget.objlogin;
+    username =objlogin!.data!.username;
+    password =objlogin!.data!.password;
+    // TODO: implement initState
+    super.initState();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
